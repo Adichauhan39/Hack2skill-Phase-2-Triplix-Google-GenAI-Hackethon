@@ -99,67 +99,289 @@ Itinerary Planning    General Info
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Quick Start Guide
 
 ### **Prerequisites**
-- Python 3.11 or higher
-- Flutter SDK 3.0+
-- Google Cloud API Key
-- OpenWeatherMap API Key (optional)
 
-### **1. Clone Repository**
-```bash
+Before running Triplix, ensure you have:
+
+#### **Required Software**
+- **Python 3.11 or higher** - [Download Python](https://www.python.org/downloads/)
+- **Flutter SDK 3.0+** - [Install Flutter](https://docs.flutter.dev/get-started/install)
+- **Git** - [Install Git](https://git-scm.com/downloads)
+
+#### **API Keys Required**
+- **Google Cloud API Key** (with Gemini AI enabled) - [Get API Key](https://makersuite.google.com/app/apikey)
+- **Google Places API Key** (same as above, enable Places API) - [Enable Places API](https://console.cloud.google.com/apis/library/places-backend.googleapis.com)
+- **OpenWeatherMap API Key** (optional, for weather features) - [Get Free Key](https://openweathermap.org/api)
+
+---
+
+### **Step 1: Clone Repository**
+
+```powershell
+# Clone the repository
 git clone https://github.com/Adichauhan39/Hack2skill-Phase-2-internal.git
+
+# Navigate to project directory
 cd Hack2skill-Phase-2-internal
 ```
 
-### **2. Backend Setup**
+---
 
-#### Install Dependencies
-```bash
-cd 7-multi-agent
+### **Step 2: Backend Setup (Python FastAPI Server)**
+
+#### **2.1 Install Python Dependencies**
+
+```powershell
+# Navigate to backend directory
+cd "7-multi-agent"
+
+# Install all required packages
 pip install -r ../requirements.txt
 ```
 
-#### Configure Environment Variables
-```bash
-# Copy the example file
-cp .env.example .env
+**Key Dependencies Installed:**
+- `fastapi` - Web framework
+- `uvicorn` - ASGI server
+- `google-generativeai` - Gemini AI SDK
+- `google-adk` - Agent Development Kit
+- `requests` - HTTP library
+- `python-dotenv` - Environment variables
+- `googlemaps` - Google Maps integration
+- `pandas` - Data processing
 
-# Edit .env and add your API keys
-GOOGLE_API_KEY=your_google_api_key_here
-GOOGLE_PLACES_API_KEY=your_google_api_key_here
-OPENWEATHER_API_KEY=your_openweather_key_here (optional)
+#### **2.2 Configure Environment Variables**
+
+Create a `.env` file in the `7-multi-agent` directory:
+
+```powershell
+# Create .env file (use notepad or any text editor)
+notepad .env
 ```
 
-#### Start Backend Server
-```bash
-# Option 1: Using PowerShell script
-.\start_ai_server.ps1
+**Add these configurations to `.env`:**
 
-# Option 2: Direct Python command
+```env
+# Required: Google Cloud API Key (for Gemini AI and Places)
+GOOGLE_API_KEY=your_google_api_key_here
+GOOGLE_PLACES_API_KEY=your_google_api_key_here
+
+# Optional: Weather API (for weather features)
+OPENWEATHER_API_KEY=your_openweather_key_here
+
+# Server Configuration (default values)
+HOST=0.0.0.0
+PORT=8000
+
+# CORS Settings (for Flutter app)
+ALLOWED_ORIGINS=http://localhost:*,http://127.0.0.1:*
+```
+
+**⚠️ Important:** Replace `your_google_api_key_here` with your actual API keys!
+
+#### **2.3 Start Backend Server**
+
+**Option A: Using PowerShell Script (Recommended)**
+```powershell
+# Make sure you're in the 7-multi-agent directory
+.\start_ai_server.ps1
+```
+
+**Option B: Direct Python Command**
+```powershell
 python ultra_simple_server.py
 ```
 
-Server will run on: `http://localhost:8000`
+**Option C: Using Uvicorn Directly**
+```powershell
+uvicorn ultra_simple_server:app --host 0.0.0.0 --port 8000 --reload
+```
 
-### **3. Frontend Setup**
+**✅ Server Running Successfully:**
+```
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process
+INFO:     Started server process
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+```
 
-#### Install Flutter Dependencies
-```bash
+**Test the server:** Open browser and visit `http://localhost:8000/docs` to see the API documentation.
+
+---
+
+### **Step 3: Frontend Setup (Flutter Mobile App)**
+
+#### **3.1 Navigate to Flutter Project**
+
+```powershell
+# From project root, navigate to Flutter app
 cd flutter_travel_app
+```
+
+#### **3.2 Install Flutter Dependencies**
+
+```powershell
+# Get all Flutter packages
 flutter pub get
 ```
 
-#### Run the App
-```bash
-# Run on connected device/emulator
-flutter run
+This will install:
+- `card_swiper` - Swipe interface
+- `provider` - State management
+- `http` - API communication
+- `url_launcher` - Google Maps links
+- `google_fonts` - Custom typography
 
-# Or run on specific platform
-flutter run -d chrome      # Web
-flutter run -d windows     # Windows
-flutter run -d android     # Android
+#### **3.3 Verify Flutter Installation**
+
+```powershell
+# Check Flutter setup
+flutter doctor
+```
+
+Fix any issues reported by `flutter doctor` before proceeding.
+
+#### **3.4 Run the Flutter App**
+
+**Option A: Run on Connected Android Device/Emulator**
+```powershell
+flutter run -d android
+```
+
+**Option B: Run on Windows Desktop**
+```powershell
+flutter run -d windows
+```
+
+**Option C: Run on Web Browser**
+```powershell
+flutter run -d chrome
+```
+
+**Option D: List All Available Devices**
+```powershell
+# See all connected devices
+flutter devices
+
+# Run on specific device
+flutter run -d <device-id>
+```
+
+**✅ App Running Successfully:**
+```
+Launching lib\main.dart on Chrome in debug mode...
+Built build\web.
+lib\main.dart is being served at http://localhost:xxxxx
+```
+
+---
+
+### **Step 4: Using Triplix**
+
+#### **4.1 Login**
+- Open the app
+- Use any credentials (mock authentication):
+  - Email: `test@triplix.com`
+  - Password: `test123`
+
+#### **4.2 Start Planning**
+1. **Enter a query**: "Plan a 3-day trip to Goa"
+2. **Chat with AI**: Get personalized recommendations
+3. **Swipe through options**: Right ❤️ to like, Left ❌ to skip
+4. **View on Maps**: Tap the Maps button to see locations
+5. **Complete Booking**: Use mock booking system
+
+---
+
+## 🔧 Troubleshooting
+
+### **Backend Issues**
+
+**Problem: `ModuleNotFoundError: No module named 'fastapi'`**
+```powershell
+# Solution: Install dependencies
+pip install -r requirements.txt
+```
+
+**Problem: `Error: GOOGLE_API_KEY not found`**
+```powershell
+# Solution: Check .env file exists in 7-multi-agent directory
+# Make sure API key is correctly set without quotes
+GOOGLE_API_KEY=AIzaSyC...
+```
+
+**Problem: Server won't start - Port already in use**
+```powershell
+# Solution: Kill process on port 8000
+netstat -ano | findstr :8000
+taskkill /PID <process_id> /F
+```
+
+### **Frontend Issues**
+
+**Problem: `flutter: command not found`**
+```powershell
+# Solution: Add Flutter to PATH or use full path
+C:\path\to\flutter\bin\flutter run
+```
+
+**Problem: `Failed to connect to backend`**
+```powershell
+# Solution: Verify backend is running
+# Visit http://localhost:8000/docs in browser
+# Check firewall settings
+```
+
+**Problem: Material Icons not showing**
+```powershell
+# Solution: Clear Flutter cache and rebuild
+flutter clean
+flutter pub get
+flutter run
+```
+
+### **API Issues**
+
+**Problem: Weather not showing**
+- Weather feature requires OpenWeatherMap API key in `.env`
+- App works without it (graceful fallback)
+- Get free key at https://openweathermap.org/api
+
+**Problem: Google Maps links not working**
+- Ensure `GOOGLE_PLACES_API_KEY` is set in `.env`
+- Enable Places API in Google Cloud Console
+- Check API quotas and billing
+
+---
+
+## 📱 Running in Production
+
+### **Backend Deployment**
+
+```powershell
+# Install production server
+pip install gunicorn
+
+# Run with Gunicorn (Linux/Mac)
+gunicorn ultra_simple_server:app --workers 4 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:8000
+
+# Run with Uvicorn (Windows)
+uvicorn ultra_simple_server:app --host 0.0.0.0 --port 8000 --workers 4
+```
+
+### **Flutter Build**
+
+```powershell
+# Build Android APK
+flutter build apk --release
+
+# Build Windows executable
+flutter build windows --release
+
+# Build Web
+flutter build web --release
 ```
 
 ---
