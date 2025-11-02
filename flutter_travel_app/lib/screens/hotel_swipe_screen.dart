@@ -155,17 +155,16 @@ class _HotelSwipeScreenState extends State<HotelSwipeScreen> {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
       ),
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          gradient: const LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [Colors.white, Color(0xFFF8F9FA)],
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(20),
+        child: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [Colors.white, Color(0xFFF8F9FA)],
+            ),
           ),
-        ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(20),
           child: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
             child: Column(
@@ -175,7 +174,7 @@ class _HotelSwipeScreenState extends State<HotelSwipeScreen> {
                 _buildHotelImage(hotel),
                 // Hotel Details
                 Padding(
-                  padding: const EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(16),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -187,7 +186,7 @@ class _HotelSwipeScreenState extends State<HotelSwipeScreen> {
                             child: Text(
                               hotel['name'] ?? 'Hotel',
                               style: const TextStyle(
-                                fontSize: 22,
+                                fontSize: 20,
                                 fontWeight: FontWeight.bold,
                                 color: Color(0xFF2C3E50),
                               ),
@@ -196,7 +195,7 @@ class _HotelSwipeScreenState extends State<HotelSwipeScreen> {
                           _buildRatingBadge(hotel['rating']),
                         ],
                       ),
-                      const SizedBox(height: 8),
+                      const SizedBox(height: 6),
 
                       // Location and Type
                       Row(
@@ -207,11 +206,14 @@ class _HotelSwipeScreenState extends State<HotelSwipeScreen> {
                             color: Color(0xFFE74C3C),
                           ),
                           const SizedBox(width: 4),
-                          Text(
-                            hotel['city'] ?? '',
-                            style: const TextStyle(
-                              fontSize: 14,
-                              color: Color(0xFF7F8C8D),
+                          Flexible(
+                            child: Text(
+                              hotel['city'] ?? '',
+                              style: const TextStyle(
+                                fontSize: 13,
+                                color: Color(0xFF7F8C8D),
+                              ),
+                              overflow: TextOverflow.ellipsis,
                             ),
                           ),
                           const SizedBox(width: 12),
@@ -221,22 +223,25 @@ class _HotelSwipeScreenState extends State<HotelSwipeScreen> {
                             color: Color(0xFF3498DB),
                           ),
                           const SizedBox(width: 4),
-                          Text(
-                            hotel['type'] ?? '',
-                            style: const TextStyle(
-                              fontSize: 14,
-                              color: Color(0xFF7F8C8D),
+                          Flexible(
+                            child: Text(
+                              hotel['type'] ?? '',
+                              style: const TextStyle(
+                                fontSize: 13,
+                                color: Color(0xFF7F8C8D),
+                              ),
+                              overflow: TextOverflow.ellipsis,
                             ),
                           ),
                         ],
                       ),
-                      const SizedBox(height: 16),
+                      const SizedBox(height: 12),
 
                       // Price
                       Container(
                         padding: const EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 12,
+                          horizontal: 12,
+                          vertical: 10,
                         ),
                         decoration: BoxDecoration(
                           gradient: const LinearGradient(
@@ -253,7 +258,7 @@ class _HotelSwipeScreenState extends State<HotelSwipeScreen> {
                                 const Text(
                                   'Price per night',
                                   style: TextStyle(
-                                    fontSize: 12,
+                                    fontSize: 11,
                                     color: Colors.white70,
                                   ),
                                 ),
@@ -261,7 +266,7 @@ class _HotelSwipeScreenState extends State<HotelSwipeScreen> {
                                   currencyFormat
                                       .format(hotel['price_per_night'] ?? 0),
                                   style: const TextStyle(
-                                    fontSize: 24,
+                                    fontSize: 20,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white,
                                   ),
@@ -279,13 +284,13 @@ class _HotelSwipeScreenState extends State<HotelSwipeScreen> {
 
                       // AI Match Score (if available)
                       if (hotel['match_score'] != null) ...[
-                        const SizedBox(height: 16),
+                        const SizedBox(height: 12),
                         _buildAIMatchScore(hotel),
                       ],
 
                       // Why Recommended
                       if (hotel['why_recommended'] != null) ...[
-                        const SizedBox(height: 16),
+                        const SizedBox(height: 12),
                         _buildSection(
                           'Why We Recommend',
                           Icons.psychology,
@@ -296,13 +301,13 @@ class _HotelSwipeScreenState extends State<HotelSwipeScreen> {
 
                       // Highlights
                       if (hotel['highlights'] != null) ...[
-                        const SizedBox(height: 16),
+                        const SizedBox(height: 12),
                         _buildHighlights(hotel['highlights']),
                       ],
 
                       // Perfect For
                       if (hotel['perfect_for'] != null) ...[
-                        const SizedBox(height: 16),
+                        const SizedBox(height: 12),
                         _buildSection(
                           'Perfect For',
                           Icons.person,
@@ -313,11 +318,11 @@ class _HotelSwipeScreenState extends State<HotelSwipeScreen> {
 
                       // Amenities
                       if (hotel['amenities'] != null) ...[
-                        const SizedBox(height: 16),
+                        const SizedBox(height: 12),
                         _buildAmenities(hotel['amenities']),
                       ],
 
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 16),
                     ],
                   ),
                 ),
@@ -331,7 +336,7 @@ class _HotelSwipeScreenState extends State<HotelSwipeScreen> {
 
   Widget _buildHotelImage(Map<String, dynamic> hotel) {
     return Container(
-      height: 240,
+      height: 200,
       width: double.infinity,
       decoration: const BoxDecoration(
         gradient: LinearGradient(
@@ -464,12 +469,48 @@ class _HotelSwipeScreenState extends State<HotelSwipeScreen> {
       children: [
         Row(
           children: [
-            Icon(icon, color: color, size: 20),
-            const SizedBox(width: 8),
+            Icon(icon, color: color, size: 18),
+            const SizedBox(width: 6),
             Text(
               title,
               style: const TextStyle(
-                fontSize: 16,
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF2C3E50),
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 6),
+        Text(
+          content,
+          style: const TextStyle(
+            fontSize: 13,
+            color: Color(0xFF7F8C8D),
+            height: 1.4,
+          ),
+          maxLines: 3,
+          overflow: TextOverflow.ellipsis,
+        ),
+      ],
+    );
+  }
+
+  Widget _buildHighlights(List<dynamic> highlights) {
+    // Limit to first 4 highlights
+    final displayHighlights = highlights.take(4).toList();
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Row(
+          children: [
+            Icon(Icons.star_border, color: Color(0xFFF39C12), size: 18),
+            SizedBox(width: 6),
+            Text(
+              'Key Highlights',
+              style: TextStyle(
+                fontSize: 15,
                 fontWeight: FontWeight.bold,
                 color: Color(0xFF2C3E50),
               ),
@@ -477,43 +518,12 @@ class _HotelSwipeScreenState extends State<HotelSwipeScreen> {
           ],
         ),
         const SizedBox(height: 8),
-        Text(
-          content,
-          style: const TextStyle(
-            fontSize: 14,
-            color: Color(0xFF7F8C8D),
-            height: 1.5,
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildHighlights(List<dynamic> highlights) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Row(
-          children: [
-            Icon(Icons.star_border, color: Color(0xFFF39C12), size: 20),
-            SizedBox(width: 8),
-            Text(
-              'Key Highlights',
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF2C3E50),
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 12),
         Wrap(
-          spacing: 8,
-          runSpacing: 8,
-          children: highlights.map((highlight) {
+          spacing: 6,
+          runSpacing: 6,
+          children: displayHighlights.map((highlight) {
             return Container(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
               decoration: BoxDecoration(
                 color: const Color(0xFFFEF5E7),
                 borderRadius: BorderRadius.circular(8),
@@ -523,7 +533,7 @@ class _HotelSwipeScreenState extends State<HotelSwipeScreen> {
               child: Text(
                 highlight.toString(),
                 style: const TextStyle(
-                  fontSize: 13,
+                  fontSize: 12,
                   color: Color(0xFF2C3E50),
                 ),
               ),
@@ -535,8 +545,8 @@ class _HotelSwipeScreenState extends State<HotelSwipeScreen> {
   }
 
   Widget _buildAmenities(List<dynamic> amenities) {
-    // Take first 6 amenities
-    final displayAmenities = amenities.take(6).toList();
+    // Take first 4 amenities to save space
+    final displayAmenities = amenities.take(4).toList();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -544,25 +554,25 @@ class _HotelSwipeScreenState extends State<HotelSwipeScreen> {
         const Row(
           children: [
             Icon(Icons.check_circle_outline,
-                color: Color(0xFF27AE60), size: 20),
-            SizedBox(width: 8),
+                color: Color(0xFF27AE60), size: 18),
+            SizedBox(width: 6),
             Text(
               'Top Amenities',
               style: TextStyle(
-                fontSize: 16,
+                fontSize: 15,
                 fontWeight: FontWeight.bold,
                 color: Color(0xFF2C3E50),
               ),
             ),
           ],
         ),
-        const SizedBox(height: 12),
+        const SizedBox(height: 8),
         Wrap(
-          spacing: 8,
-          runSpacing: 8,
+          spacing: 6,
+          runSpacing: 6,
           children: displayAmenities.map((amenity) {
             return Container(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
               decoration: BoxDecoration(
                 color: const Color(0xFFE8F8F5),
                 borderRadius: BorderRadius.circular(8),
@@ -574,14 +584,14 @@ class _HotelSwipeScreenState extends State<HotelSwipeScreen> {
                 children: [
                   Icon(
                     _getAmenityIcon(amenity.toString()),
-                    size: 16,
+                    size: 14,
                     color: const Color(0xFF27AE60),
                   ),
-                  const SizedBox(width: 6),
+                  const SizedBox(width: 4),
                   Text(
                     amenity.toString(),
                     style: const TextStyle(
-                      fontSize: 13,
+                      fontSize: 12,
                       color: Color(0xFF2C3E50),
                     ),
                   ),

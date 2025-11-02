@@ -104,33 +104,41 @@ class _SwipeScreenState extends State<SwipeScreen> {
       ),
       body: Column(
         children: [
-          // Type Selector
-          FadeInDown(
-            child: _TypeSelector(
-              selectedType: _selectedType,
-              onChanged: (type) {
-                setState(() => _selectedType = type);
-                _loadRecommendations();
-              },
+          // Header content that might need scrolling on very small screens
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Column(
+              children: [
+                // Type Selector
+                FadeInDown(
+                  child: _TypeSelector(
+                    selectedType: _selectedType,
+                    onChanged: (type) {
+                      setState(() => _selectedType = type);
+                      _loadRecommendations();
+                    },
+                  ),
+                ),
+
+                const SizedBox(height: 16),
+
+                // Stats Bar
+                FadeInDown(
+                  delay: const Duration(milliseconds: 100),
+                  child: _StatsBar(
+                    totalSwipes: provider.totalSwipes,
+                    likesCount: provider.likesCount,
+                    dislikesCount: provider.dislikesCount,
+                    acceptanceRate: provider.acceptanceRate,
+                  ),
+                ),
+
+                const SizedBox(height: 16),
+              ],
             ),
           ),
 
-          const SizedBox(height: 16),
-
-          // Stats Bar
-          FadeInDown(
-            delay: const Duration(milliseconds: 100),
-            child: _StatsBar(
-              totalSwipes: provider.totalSwipes,
-              likesCount: provider.likesCount,
-              dislikesCount: provider.dislikesCount,
-              acceptanceRate: provider.acceptanceRate,
-            ),
-          ),
-
-          const SizedBox(height: 16),
-
-          // Swipe Cards
+          // Swipe Cards - must remain in constrained space
           Expanded(
             child: _loading
                 ? const Center(child: CircularProgressIndicator())
@@ -252,33 +260,36 @@ class _TypeSelector extends StatelessWidget {
         color: Colors.grey[200],
         borderRadius: BorderRadius.circular(12),
       ),
-      child: Row(
-        children: [
-          _TypeChip(
-            icon: Icons.hotel,
-            label: 'Hotels',
-            isSelected: selectedType == 'hotels',
-            onTap: () => onChanged('hotels'),
-          ),
-          _TypeChip(
-            icon: Icons.place,
-            label: 'Destinations',
-            isSelected: selectedType == 'destinations',
-            onTap: () => onChanged('destinations'),
-          ),
-          _TypeChip(
-            icon: Icons.flight,
-            label: 'Travel',
-            isSelected: selectedType == 'travel',
-            onTap: () => onChanged('travel'),
-          ),
-          _TypeChip(
-            icon: Icons.attractions,
-            label: 'Attractions',
-            isSelected: selectedType == 'attractions',
-            onTap: () => onChanged('attractions'),
-          ),
-        ],
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: [
+            _TypeChip(
+              icon: Icons.hotel,
+              label: 'Hotels',
+              isSelected: selectedType == 'hotels',
+              onTap: () => onChanged('hotels'),
+            ),
+            _TypeChip(
+              icon: Icons.place,
+              label: 'Destinations',
+              isSelected: selectedType == 'destinations',
+              onTap: () => onChanged('destinations'),
+            ),
+            _TypeChip(
+              icon: Icons.flight,
+              label: 'Travel',
+              isSelected: selectedType == 'travel',
+              onTap: () => onChanged('travel'),
+            ),
+            _TypeChip(
+              icon: Icons.attractions,
+              label: 'Attractions',
+              isSelected: selectedType == 'attractions',
+              onTap: () => onChanged('attractions'),
+            ),
+          ],
+        ),
       ),
     );
   }

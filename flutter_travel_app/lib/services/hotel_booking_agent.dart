@@ -264,7 +264,7 @@ Never make up hotel information - only use real data from search results.
       if (roomType != null) {
         filteredHotels = hotels
             .where((h) =>
-                h.roomType.toLowerCase().contains(roomType.toLowerCase()))
+                h.roomType?.toLowerCase().contains(roomType.toLowerCase()) ?? false)
             .toList();
       }
 
@@ -272,7 +272,7 @@ Never make up hotel information - only use real data from search results.
       if (ambiance != null) {
         filteredHotels = filteredHotels
             .where((h) =>
-                h.ambiance.toLowerCase().contains(ambiance.toLowerCase()))
+                h.ambiance?.toLowerCase().contains(ambiance.toLowerCase()) ?? false)
             .toList();
       }
 

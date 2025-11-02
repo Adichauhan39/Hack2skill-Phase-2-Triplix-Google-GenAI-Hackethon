@@ -1,0 +1,46 @@
+from,to,airline,flight_number,departure_time,arrival_time,duration,price_economy,price_business,stops,aircraft_type,amenities
+Delhi,Mumbai,Air India,AI-101,06:00,08:00,2h 0m,3500,12000,0,Boeing 737,"Meals,WiFi,Entertainment"
+Delhi,Mumbai,IndiGo,6E-201,08:30,10:30,2h 0m,3200,11000,0,Airbus A320,"Snacks,WiFi"
+Delhi,Mumbai,Vistara,UK-301,10:00,12:00,2h 0m,3800,13500,0,Boeing 737,"Meals,WiFi,Entertainment,Priority Boarding"
+Delhi,Mumbai,SpiceJet,SG-401,12:30,14:30,2h 0m,3100,10500,0,Boeing 737,Snacks
+Delhi,Mumbai,GoAir,G8-501,14:00,16:00,2h 0m,3300,11500,0,Airbus A320,"Meals,WiFi"
+Delhi,Bangalore,Air India,AI-102,07:00,09:30,2h 30m,4200,15000,0,Boeing 737,"Meals,WiFi,Entertainment"
+Delhi,Bangalore,IndiGo,6E-202,09:00,11:30,2h 30m,3800,13500,0,Airbus A320,"Snacks,WiFi"
+Delhi,Bangalore,Vistara,UK-302,11:00,13:30,2h 30m,4500,16500,0,Boeing 737,"Meals,WiFi,Entertainment,Priority Boarding"
+Delhi,Bangalore,SpiceJet,SG-402,13:00,15:30,2h 30m,3600,12500,0,Boeing 737,Snacks
+Delhi,Bangalore,GoAir,G8-502,15:30,18:00,2h 30m,3900,14000,0,Airbus A320,"Meals,WiFi"
+Delhi,Goa,Air India,AI-103,08:00,10:30,2h 30m,4800,18000,0,Boeing 737,"Meals,WiFi,Entertainment"
+Delhi,Goa,IndiGo,6E-203,10:00,12:30,2h 30m,4200,15500,0,Airbus A320,"Snacks,WiFi"
+Delhi,Goa,Vistara,UK-303,12:00,14:30,2h 30m,5200,19500,0,Boeing 737,"Meals,WiFi,Entertainment,Priority Boarding"
+Delhi,Goa,SpiceJet,SG-403,14:00,16:30,2h 30m,4000,14500,0,Boeing 737,Snacks
+Delhi,Goa,GoAir,G8-503,16:00,18:30,2h 30m,4400,16500,0,Airbus A320,"Meals,WiFi"
+Delhi,Kolkata,Air India,AI-104,06:30,09:30,3h 0m,5500,21000,0,Boeing 737,"Meals,WiFi,Entertainment"
+Delhi,Kolkata,IndiGo,6E-204,08:00,11:00,3h 0m,4800,18500,0,Airbus A320,"Snacks,WiFi"
+Delhi,Kolkata,Vistara,UK-304,10:00,13:00,3h 0m,6000,23000,0,Boeing 737,"Meals,WiFi,Entertainment,Priority Boarding"
+Delhi,Kolkata,SpiceJet,SG-404,12:00,15:00,3h 0m,4500,17000,0,Boeing 737,Snacks
+Delhi,Kolkata,GoAir,G8-504,14:00,17:00,3h 0m,5000,19000,0,Airbus A320,"Meals,WiFi"
+Mumbai,Delhi,Air India,AI-105,09:00,11:00,2h 0m,3500,12000,0,Boeing 737,"Meals,WiFi,Entertainment"
+Mumbai,Delhi,IndiGo,6E-205,11:00,13:00,2h 0m,3200,11000,0,Airbus A320,"Snacks,WiFi"
+Mumbai,Delhi,Vistara,UK-305,13:00,15:00,2h 0m,3800,13500,0,Boeing 737,"Meals,WiFi,Entertainment,Priority Boarding"
+Mumbai,Delhi,SpiceJet,SG-405,15:00,17:00,2h 0m,3100,10500,0,Boeing 737,Snacks
+Mumbai,Delhi,GoAir,G8-505,17:00,19:00,2h 0m,3300,11500,0,Airbus A320,"Meals,WiFi"
+Mumbai,Bangalore,Air India,AI-106,07:30,09:30,2h 0m,3800,14000,0,Boeing 737,"Meals,WiFi,Entertainment"
+Mumbai,Bangalore,IndiGo,6E-206,09:30,11:30,2h 0m,3500,13000,0,Airbus A320,"Snacks,WiFi"
+Mumbai,Bangalore,Vistara,UK-306,11:30,13:30,2h 0m,4200,15500,0,Boeing 737,"Meals,WiFi,Entertainment,Priority Boarding"
+Mumbai,Bangalore,SpiceJet,SG-406,13:30,15:30,2h 0m,3300,12000,0,Boeing 737,Snacks
+Mumbai,Bangalore,GoAir,G8-506,15:30,17:30,2h 0m,3600,13500,0,Airbus A320,"Meals,WiFi"
+Bangalore,Delhi,Air India,AI-107,06:00,08:30,2h 30m,4200,15000,0,Boeing 737,"Meals,WiFi,Entertainment"
+Bangalore,Delhi,IndiGo,6E-207,08:00,10:30,2h 30m,3800,13500,0,Airbus A320,"Snacks,WiFi"
+Bangalore,Delhi,Vistara,UK-307,10:00,12:30,2h 30m,4500,16500,0,Boeing 737,"Meals,WiFi,Entertainment,Priority Boarding"
+Bangalore,Delhi,SpiceJet,SG-407,12:00,14:30,2h 30m,3600,12500,0,Boeing 737,Snacks
+Bangalore,Delhi,GoAir,G8-507,14:00,16:30,2h 30m,3900,14000,0,Airbus A320,"Meals,WiFi"
+Goa,Delhi,Air India,AI-108,07:00,09:30,2h 30m,4800,18000,0,Boeing 737,"Meals,WiFi,Entertainment"
+Goa,Delhi,IndiGo,6E-208,09:00,11:30,2h 30m,4200,15500,0,Airbus A320,"Snacks,WiFi"
+Goa,Delhi,Vistara,UK-308,11:00,13:30,2h 30m,5200,19500,0,Boeing 737,"Meals,WiFi,Entertainment,Priority Boarding"
+Goa,Delhi,SpiceJet,SG-408,13:00,15:30,2h 30m,4000,14500,0,Boeing 737,Snacks
+Goa,Delhi,GoAir,G8-508,15:00,17:30,2h 30m,4400,16500,0,Airbus A320,"Meals,WiFi"
+Kolkata,Delhi,Air India,AI-109,08:00,11:00,3h 0m,5500,21000,0,Boeing 737,"Meals,WiFi,Entertainment"
+Kolkata,Delhi,IndiGo,6E-209,10:00,13:00,3h 0m,4800,18500,0,Airbus A320,"Snacks,WiFi"
+Kolkata,Delhi,Vistara,UK-309,12:00,15:00,3h 0m,6000,23000,0,Boeing 737,"Meals,WiFi,Entertainment,Priority Boarding"
+Kolkata,Delhi,SpiceJet,SG-409,14:00,17:00,3h 0m,4500,17000,0,Boeing 737,Snacks
+Kolkata,Delhi,GoAir,G8-509,16:00,19:00,3h 0m,5000,19000,0,Airbus A320,"Meals,WiFi"

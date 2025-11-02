@@ -29,10 +29,129 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <title>flutter_travel_app</title>
+  <title>Triplix - Travel Assistant</title>
   <link rel="manifest" href="manifest.json">
+  
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    
+    #splash-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      z-index: 9999;
+    }
+    
+    .logo-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+    
+    .triplix-logo {
+      width: 150px;
+      height: 150px;
+      animation: fadeInScale 1s ease-out;
+    }
+    
+    .powered-by {
+      color: white;
+      font-size: 14px;
+      font-family: Arial, sans-serif;
+      opacity: 0.8;
+      margin-top: 10px;
+    }
+    
+    .easemytrip-logo {
+      width: 120px;
+      height: auto;
+      animation: fadeIn 1.5s ease-out;
+    }
+    
+    .loading-spinner {
+      margin-top: 30px;
+      width: 50px;
+      height: 50px;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
 </head>
 <body>
+  <div id="splash-screen">
+    <div class="logo-container">
+      <img src="favicon.png" alt="Triplix Logo" class="triplix-logo">
+      <div class="powered-by">Powered by</div>
+      <img src="assets/icons/OIP.webp" alt="EaseMyTrip Logo" class="easemytrip-logo">
+    </div>
+    <div class="loading-spinner"></div>
+  </div>
+  
+  <script>
+    // Remove splash screen once Flutter is loaded
+    window.addEventListener('load', function() {
+      // Hide splash immediately if taking too long
+      setTimeout(function() {
+        var splash = document.getElementById('splash-screen');
+        if (splash) {
+          splash.style.display = 'none';
+        }
+      }, 3000);
+    });
+    
+    // Also hide on Flutter ready
+    window.addEventListener('flutter-first-frame', function() {
+      var splash = document.getElementById('splash-screen');
+      if (splash) {
+        splash.style.opacity = '0';
+        splash.style.transition = 'opacity 0.3s ease-out';
+        setTimeout(function() {
+          splash.style.display = 'none';
+        }, 300);
+      }
+    });
+  </script>
+  
   <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>

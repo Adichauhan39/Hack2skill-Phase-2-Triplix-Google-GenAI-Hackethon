@@ -49,7 +49,8 @@ class _TinderHotelSwipeScreenState extends State<TinderHotelSwipeScreen> {
         print('Error loading images for $hotelName: $e');
         if (mounted) {
           setState(() {
-            _hotelImages[hotelName] = _getCitySpecificImages(hotel['city'] ?? '');
+            _hotelImages[hotelName] =
+                _getCitySpecificImages(hotel['city'] ?? '');
             _imageLoadingStates[hotelName] = false;
           });
         }
@@ -101,14 +102,15 @@ class _TinderHotelSwipeScreenState extends State<TinderHotelSwipeScreen> {
           final term = searchTerms[i].toString().replaceAll('"', '').trim();
           final encodedTerm = Uri.encodeComponent(term);
           // Add randomization and hotel-specific parameters to ensure unique images
-          final uniqueUrl = 'https://source.unsplash.com/800x600/?$encodedTerm&r=${random + i}';
+          final uniqueUrl =
+              'https://source.unsplash.com/800x600/?$encodedTerm&r=${random + i}';
           imageUrls.add(uniqueUrl);
         }
 
-        print('✅ Generated ${imageUrls.length} AI-powered image URLs for $hotelName');
+        print(
+            '✅ Generated ${imageUrls.length} AI-powered image URLs for $hotelName');
         return imageUrls;
       }
-
     } catch (e) {
       print('❌ AI image search failed: $e');
     }
@@ -174,18 +176,19 @@ class _TinderHotelSwipeScreenState extends State<TinderHotelSwipeScreen> {
 
     // Add randomization to prevent same images
     final random = DateTime.now().millisecondsSinceEpoch;
-    final selectedImages = cityImages[cityKey] ?? [
-      'https://source.unsplash.com/800x600/?luxury-hotel-lobby',
-      'https://source.unsplash.com/800x600/?luxury-hotel-room',
-      'https://source.unsplash.com/800x600/?luxury-hotel-pool',
-      'https://source.unsplash.com/800x600/?luxury-hotel-restaurant',
-      'https://source.unsplash.com/800x600/?luxury-hotel-spa',
-      'https://source.unsplash.com/800x600/?luxury-hotel-bar',
-      'https://source.unsplash.com/800x600/?luxury-hotel-garden',
-      'https://source.unsplash.com/800x600/?luxury-hotel-exterior',
-      'https://source.unsplash.com/800x600/?luxury-hotel-suite',
-      'https://source.unsplash.com/800x600/?luxury-hotel-bathroom',
-    ];
+    final selectedImages = cityImages[cityKey] ??
+        [
+          'https://source.unsplash.com/800x600/?luxury-hotel-lobby',
+          'https://source.unsplash.com/800x600/?luxury-hotel-room',
+          'https://source.unsplash.com/800x600/?luxury-hotel-pool',
+          'https://source.unsplash.com/800x600/?luxury-hotel-restaurant',
+          'https://source.unsplash.com/800x600/?luxury-hotel-spa',
+          'https://source.unsplash.com/800x600/?luxury-hotel-bar',
+          'https://source.unsplash.com/800x600/?luxury-hotel-garden',
+          'https://source.unsplash.com/800x600/?luxury-hotel-exterior',
+          'https://source.unsplash.com/800x600/?luxury-hotel-suite',
+          'https://source.unsplash.com/800x600/?luxury-hotel-bathroom',
+        ];
 
     // Add random parameter to each URL to ensure uniqueness
     return selectedImages.map((url) => '$url&r=$random').toList();
@@ -257,15 +260,18 @@ class _TinderHotelSwipeScreenState extends State<TinderHotelSwipeScreen> {
                       child: CardSwiper(
                         controller: _controller,
                         cardsCount: widget.hotels.length,
-                        numberOfCardsDisplayed: widget.hotels.length > 2 ? 3 : widget.hotels.length,
+                        numberOfCardsDisplayed:
+                            widget.hotels.length > 2 ? 3 : widget.hotels.length,
                         backCardOffset: const Offset(20, 20),
                         padding: const EdgeInsets.all(20.0),
-                        cardBuilder: (context, index, percentThresholdX, percentThresholdY) {
+                        cardBuilder: (context, index, percentThresholdX,
+                            percentThresholdY) {
                           return _buildHotelCard(widget.hotels[index]);
                         },
                         onSwipe: _onSwipe,
                         onEnd: _onEnd,
-                        allowedSwipeDirection: const AllowedSwipeDirection.symmetric(
+                        allowedSwipeDirection:
+                            const AllowedSwipeDirection.symmetric(
                           horizontal: true,
                         ),
                       ),
@@ -311,7 +317,8 @@ class _TinderHotelSwipeScreenState extends State<TinderHotelSwipeScreen> {
             child: LinearProgressIndicator(
               value: (_currentIndex + 1) / widget.hotels.length,
               backgroundColor: Colors.grey[300],
-              valueColor: const AlwaysStoppedAnimation<Color>(Color(0xFFE74C3C)),
+              valueColor:
+                  const AlwaysStoppedAnimation<Color>(Color(0xFFE74C3C)),
               minHeight: 8,
             ),
           ),
@@ -323,7 +330,7 @@ class _TinderHotelSwipeScreenState extends State<TinderHotelSwipeScreen> {
   Widget _buildHotelCard(Map<String, dynamic> hotel) {
     final hotelName = hotel['name'] ?? 'Hotel';
     final images = _hotelImages[hotelName] ?? [];
-    final currentImageIndex = 0; // For vertical scrolling
+    const currentImageIndex = 0; // For vertical scrolling
 
     return Card(
       elevation: 12,
@@ -350,48 +357,50 @@ class _TinderHotelSwipeScreenState extends State<TinderHotelSwipeScreen> {
                 child: Stack(
                   children: [
                     // Main image or loading indicator
-                    Container(
+                    SizedBox(
                       width: double.infinity,
                       height: 300,
                       child: _imageLoadingStates[hotelName] == true
-                        ? Container(
-                            color: Colors.grey[200],
-                            child: const Center(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  CircularProgressIndicator(
-                                    valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFE74C3C)),
-                                  ),
-                                  SizedBox(height: 16),
-                                  Text(
-                                    'Loading hotel images...',
-                                    style: TextStyle(
-                                      color: Color(0xFF2C3E50),
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500,
+                          ? Container(
+                              color: Colors.grey[200],
+                              child: const Center(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    CircularProgressIndicator(
+                                      valueColor: AlwaysStoppedAnimation<Color>(
+                                          Color(0xFFE74C3C)),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          )
-                        : Container(
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: NetworkImage(
-                                  images.isNotEmpty
-                                      ? images[currentImageIndex]
-                                      : 'https://source.unsplash.com/800x600/?luxury-hotel-lobby',
+                                    SizedBox(height: 16),
+                                    Text(
+                                      'Loading hotel images...',
+                                      style: TextStyle(
+                                        color: Color(0xFF2C3E50),
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                fit: BoxFit.cover,
-                                onError: (exception, stackTrace) {
-                                  // Fallback to a default image if network image fails
-                                  print('Image load error for $hotelName: $exception');
-                                },
+                              ),
+                            )
+                          : Container(
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: NetworkImage(
+                                    images.isNotEmpty
+                                        ? images[currentImageIndex]
+                                        : 'https://source.unsplash.com/800x600/?luxury-hotel-lobby',
+                                  ),
+                                  fit: BoxFit.cover,
+                                  onError: (exception, stackTrace) {
+                                    // Fallback to a default image if network image fails
+                                    print(
+                                        'Image load error for $hotelName: $exception');
+                                  },
+                                ),
                               ),
                             ),
-                          ),
                     ),
                     // Gradient overlay (only show when not loading)
                     if (_imageLoadingStates[hotelName] != true)
@@ -444,7 +453,8 @@ class _TinderHotelSwipeScreenState extends State<TinderHotelSwipeScreen> {
                                 ),
                                 const SizedBox(width: 16),
                                 Container(
-                                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 8, vertical: 4),
                                   decoration: BoxDecoration(
                                     color: Colors.white.withOpacity(0.9),
                                     borderRadius: BorderRadius.circular(12),
@@ -483,7 +493,8 @@ class _TinderHotelSwipeScreenState extends State<TinderHotelSwipeScreen> {
                             images.length,
                             (index) => Expanded(
                               child: Container(
-                                margin: const EdgeInsets.symmetric(horizontal: 2),
+                                margin:
+                                    const EdgeInsets.symmetric(horizontal: 2),
                                 height: 3,
                                 decoration: BoxDecoration(
                                   color: index == currentImageIndex
@@ -566,7 +577,8 @@ class _TinderHotelSwipeScreenState extends State<TinderHotelSwipeScreen> {
                           runSpacing: 8,
                           children: (hotel['amenities'] as List).map((amenity) {
                             return Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 12, vertical: 6),
                               decoration: BoxDecoration(
                                 color: const Color(0xFFE3F2FD),
                                 borderRadius: BorderRadius.circular(20),
@@ -1034,7 +1046,8 @@ class _TinderHotelSwipeScreenState extends State<TinderHotelSwipeScreen> {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: _cartHotels.isNotEmpty ? _proceedToBooking : null,
+                      onPressed:
+                          _cartHotels.isNotEmpty ? _proceedToBooking : null,
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFFE74C3C),
                         padding: const EdgeInsets.symmetric(vertical: 16),
@@ -1104,7 +1117,8 @@ class _TinderHotelSwipeScreenState extends State<TinderHotelSwipeScreen> {
   }
 
   int _calculateTotal() {
-    return _cartHotels.fold(0, (sum, hotel) => sum + (hotel['price_per_night'] ?? 0) as int);
+    return _cartHotels.fold(
+        0, (sum, hotel) => sum + (hotel['price_per_night'] ?? 0) as int);
   }
 
   void _proceedToBooking() {

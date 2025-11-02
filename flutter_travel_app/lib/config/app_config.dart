@@ -18,27 +18,51 @@ class AppConfig {
   static const String appName = 'AI Travel Booking';
   static const String appVersion = '1.0.0';
 
-  // Colors - EaseMyTrip inspired
-  static const Color primaryColor = Color(0xFF231F9E); // Deep Blue
-  static const Color secondaryColor = Color(0xFFE73C33); // Red accent
-  static const Color accentColor = Color(0xFFEF6C00); // Orange
-  static const Color backgroundColor = Color(0xFFF5F5F5);
+  // Colors - Exact EaseMyTrip color scheme
+  static const Color primaryColor = Color(0xFF1e3a8a); // Deep Blue
+  static const Color secondaryColor = Color(0xFFdc2626); // Red
+  static const Color accentColor = Color(0xFFea580c); // Orange
+  static const Color backgroundColor =
+      Color(0xFFF8FAFC); // Light gray background
   static const Color cardColor = Colors.white;
-  static const Color textPrimary = Color(0xFF212121);
-  static const Color textSecondary = Color(0xFF757575);
-  static const Color successColor = Color(0xFF4CAF50);
-  static const Color warningColor = Color(0xFFFF9800);
-  static const Color errorColor = Color(0xFFE53935);
+  static const Color surfaceColor = Color(0xFFFFFFFF);
+  static const Color textPrimary = Color(0xFF1e293b); // Dark slate
+  static const Color textSecondary = Color(0xFF64748b); // Medium gray
+  static const Color textTertiary = Color(0xFF94a3b8); // Light gray
+  static const Color borderColor = Color(0xFFE2E8F0); // Very light gray
+  static const Color dividerColor = Color(0xFFF1F5F9);
+  static const Color successColor = Color(0xFF10b981); // Green
+  static const Color warningColor = Color(0xFFf59e0b); // Amber
+  static const Color errorColor = Color(0xFFef4444); // Red
+  static const Color infoColor = Color(0xFF3b82f6); // Blue
 
-  // Gradient Colors
+  // Shadows - EaseMyTrip style
+  static const BoxShadow cardShadow = BoxShadow(
+    color: Color(0x0F1e293b),
+    blurRadius: 8,
+    offset: Offset(0, 2),
+  );
+  static const BoxShadow buttonShadow = BoxShadow(
+    color: Color(0x1F1e3a8a),
+    blurRadius: 4,
+    offset: Offset(0, 2),
+  );
+
+  // Gradient Colors - EaseMyTrip style
   static const LinearGradient primaryGradient = LinearGradient(
-    colors: [Color(0xFF231F9E), Color(0xFF3F51B5)],
+    colors: [Color(0xFF1e3a8a), Color(0xFF3b82f6)],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
   );
 
   static const LinearGradient accentGradient = LinearGradient(
-    colors: [Color(0xFFE73C33), Color(0xFFEF6C00)],
+    colors: [Color(0xFFdc2626), Color(0xFFea580c)],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
+
+  static const LinearGradient successGradient = LinearGradient(
+    colors: [Color(0xFF10b981), Color(0xFF34d399)],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
   );

@@ -155,9 +155,23 @@ def generate_destination_recommendations(
     Returns:
         Dictionary with swipeable destination cards
     """
-    from ..sub_agents.destination_info.agent import load_destinations_from_csv
+    from ..sub_agents.destination_info.agent import load_destinations_from_csv, get_current_weather
     
     destinations = load_destinations_from_csv()
+    
+    # City to image mapping for better images
+    city_images = {
+        'Mumbai': 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=200&fit=crop&auto=format',
+        'Delhi': 'https://images.unsplash.com/photo-1587135941948-670b381f08ce?w=400&h=200&fit=crop&auto=format',
+        'Goa': 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=400&h=200&fit=crop&auto=format',
+        'Jaipur': 'https://images.unsplash.com/photo-1477587458883-47145ed94245?w=400&h=200&fit=crop&auto=format',
+        'Agra': 'https://images.unsplash.com/photo-1587135941948-670b381f08ce?w=400&h=200&fit=crop&auto=format',
+        'Kerala': 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=400&h=200&fit=crop&auto=format',
+        'Rajasthan': 'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=400&h=200&fit=crop&auto=format',
+        'Udaipur': 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=200&fit=crop&auto=format',
+        'Bangalore': 'https://images.unsplash.com/photo-1596176530529-78163a4f7af2?w=400&h=200&fit=crop&auto=format',
+        'Chennai': 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=400&h=200&fit=crop&auto=format',
+    }
     
     cards = []
     card_id = 1
@@ -182,20 +196,33 @@ def generate_destination_recommendations(
             if not match:
                 continue
         
+        # Get current weather for the destination
+        weather_info = get_current_weather(dest.get('city', 'Unknown City'))
+        
+        # Get image for the city
+        city_name = dest.get('city', 'Unknown City')
+        image_url = city_images.get(city_name, f"https://images.unsplash.com/400x200/?{city_name.replace(' ', '-')},travel&w=400&h=200&fit=crop&auto=format")
+        
         card = {
             "id": f"dest_{card_id}",
             "type": "destination",
             "data": dest,
             "title": dest.get('city', 'Unknown City'),
             "subtitle": dest.get('famous_for', ''),
-            "description": dest.get('description', '')[:150] + "...",
+            "description": dest.get('description', ''),
+            "location": dest.get('city', 'Unknown City'),
+            "rating": 4.5,  # Default rating for destinations
+            "image": image_url,
+            "current_weather": weather_info,
+            "highlights": dest.get('activities', [])[:4],
+            "attractions": dest.get('attractions', [])[:3],
             "details": {
                 "Location Type": ", ".join(dest.get('location_type', [])[:2]),
                 "Travel Style": ", ".join(dest.get('travel_style', [])[:2]),
                 "Best Season": ", ".join(dest.get('season_preference', [])[:2]),
+                "Cuisine": ", ".join(dest.get('cuisine', [])[:2]),
+                "Activities": ", ".join(dest.get('activities', [])[:3])
             },
-            "highlights": dest.get('activities', [])[:4],
-            "attractions": dest.get('attractions', [])[:3],
             "action_data": {
                 "location": dest.get('city')
             }

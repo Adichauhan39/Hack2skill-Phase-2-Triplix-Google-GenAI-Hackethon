@@ -1,0 +1,33 @@
+from_city,to_city,bike_id,company,model,vehicle_type,price_per_hour,helmet_included,gps_available,amenities
+Delhi,Mumbai,BIKE001,Rapido,Activa,Scooter,60,true,true,GPS, Helmet, Lock
+Delhi,Mumbai,BIKE002,Uber Moto,Pulsar,Bike,80,true,true,GPS, Helmet, Lock
+Delhi,Mumbai,BIKE003,Ola Scooter,Activa,Scooter,65,true,true,GPS, Helmet, Lock
+Delhi,Goa,BIKE004,Rapido,Activa,Scooter,70,true,true,GPS, Helmet, Lock
+Delhi,Goa,BIKE005,Uber Moto,Pulsar,Bike,90,true,true,GPS, Helmet, Lock
+Delhi,Bangalore,BIKE006,Rapido,Activa,Scooter,75,true,true,GPS, Helmet, Lock
+Delhi,Bangalore,BIKE007,Ola Scooter,Activa,Scooter,70,true,true,GPS, Helmet, Lock
+Delhi,Kolkata,BIKE008,Rapido,Activa,Scooter,65,true,true,GPS, Helmet, Lock
+Delhi,Kolkata,BIKE009,Uber Moto,Pulsar,Bike,85,true,true,GPS, Helmet, Lock
+Delhi,Chennai,BIKE010,Rapido,Activa,Scooter,80,true,true,GPS, Helmet, Lock
+Delhi,Chennai,BIKE011,Ola Scooter,Activa,Scooter,75,true,true,GPS, Helmet, Lock
+Mumbai,Delhi,BIKE012,Rapido,Activa,Scooter,60,true,true,GPS, Helmet, Lock
+Mumbai,Delhi,BIKE013,Uber Moto,Pulsar,Bike,80,true,true,GPS, Helmet, Lock
+Mumbai,Delhi,BIKE014,Ola Scooter,Activa,Scooter,65,true,true,GPS, Helmet, Lock
+Mumbai,Goa,BIKE015,Rapido,Activa,Scooter,50,true,true,GPS, Helmet, Lock
+Mumbai,Goa,BIKE016,Uber Moto,Pulsar,Bike,65,true,true,GPS, Helmet, Lock
+Mumbai,Goa,BIKE017,Ola Scooter,Activa,Scooter,55,true,true,GPS, Helmet, Lock
+Mumbai,Bangalore,BIKE018,Rapido,Activa,Scooter,55,true,true,GPS, Helmet, Lock
+Mumbai,Bangalore,BIKE019,Uber Moto,Pulsar,Bike,70,true,true,GPS, Helmet, Lock
+Mumbai,Bangalore,BIKE020,Ola Scooter,Activa,Scooter,60,true,true,GPS, Helmet, Lock
+Goa,Delhi,BIKE021,Rapido,Activa,Scooter,70,true,true,GPS, Helmet, Lock
+Goa,Delhi,BIKE022,Uber Moto,Pulsar,Bike,90,true,true,GPS, Helmet, Lock
+Goa,Delhi,BIKE023,Ola Scooter,Activa,Scooter,75,true,true,GPS, Helmet, Lock
+Goa,Mumbai,BIKE024,Rapido,Activa,Scooter,50,true,true,GPS, Helmet, Lock
+Goa,Mumbai,BIKE025,Uber Moto,Pulsar,Bike,65,true,true,GPS, Helmet, Lock
+Goa,Mumbai,BIKE026,Ola Scooter,Activa,Scooter,55,true,true,GPS, Helmet, Lock
+Bangalore,Delhi,BIKE027,Rapido,Activa,Scooter,75,true,true,GPS, Helmet, Lock
+Bangalore,Delhi,BIKE028,Uber Moto,Pulsar,Bike,95,true,true,GPS, Helmet, Lock
+Bangalore,Delhi,BIKE029,Ola Scooter,Activa,Scooter,80,true,true,GPS, Helmet, Lock
+Bangalore,Mumbai,BIKE030,Rapido,Activa,Scooter,55,true,true,GPS, Helmet, Lock
+Bangalore,Mumbai,BIKE031,Uber Moto,Pulsar,Bike,70,true,true,GPS, Helmet, Lock
+Bangalore,Mumbai,BIKE032,Ola Scooter,Activa,Scooter,60,true,true,GPS, Helmet, Lock

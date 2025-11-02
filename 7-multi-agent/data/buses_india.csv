@@ -1,0 +1,20 @@
+from_city,to_city,bus_number,operator,bus_type,departure_time,arrival_time,duration,stops,ac_available,price,amenities
+Delhi,Mumbai,B001,RedBus,Volvo AC,22:00,12:00,14h 0m,1,true,2500,"AC, WiFi, Entertainment, Water, Blanket"
+Delhi,Mumbai,B002,MakeMyTrip,Sleeper AC,23:30,13:30,14h 0m,1,true,2800,"AC, Sleeper, WiFi, Entertainment, Meals"
+Delhi,Mumbai,B003,AbhiBus,Volvo AC,21:00,11:00,14h 0m,1,true,2400,"AC, WiFi, Entertainment, Water"
+Mumbai,Delhi,B004,RedBus,Volvo AC,22:30,12:30,14h 0m,1,true,2500,"AC, WiFi, Entertainment, Water, Blanket"
+Mumbai,Delhi,B005,MakeMyTrip,Sleeper AC,23:00,13:00,14h 0m,1,true,2800,"AC, Sleeper, WiFi, Entertainment, Meals"
+Delhi,Goa,B006,RedBus,Volvo AC,20:00,08:00,12h 0m,2,true,2200,"AC, WiFi, Entertainment, Water"
+Goa,Delhi,B007,RedBus,Volvo AC,21:00,09:00,12h 0m,2,true,2200,"AC, WiFi, Entertainment, Water"
+Delhi,Bangalore,B008,RedBus,Volvo AC,21:30,15:30,18h 0m,2,true,3000,"AC, WiFi, Entertainment, Meals, Water"
+Bangalore,Delhi,B009,RedBus,Volvo AC,22:00,16:00,18h 0m,2,true,3000,"AC, WiFi, Entertainment, Meals, Water"
+Delhi,Kolkata,B010,RedBus,Volvo AC,23:00,21:00,22h 0m,3,true,3500,"AC, WiFi, Entertainment, Meals, Water, Blanket"
+Kolkata,Delhi,B011,RedBus,Volvo AC,23:30,21:30,22h 0m,3,true,3500,"AC, WiFi, Entertainment, Meals, Water, Blanket"
+Delhi,Chennai,B012,RedBus,Volvo AC,20:30,14:30,18h 0m,2,true,3200,"AC, WiFi, Entertainment, Meals, Water"
+Chennai,Delhi,B013,RedBus,Volvo AC,21:00,15:00,18h 0m,2,true,3200,"AC, WiFi, Entertainment, Meals, Water"
+Mumbai,Goa,B014,RedBus,AC Seater,08:00,14:00,6h 0m,1,true,1200,"AC, WiFi, Water"
+Goa,Mumbai,B015,RedBus,AC Seater,15:00,21:00,6h 0m,1,true,1200,AC, WiFi, Water
+Mumbai,Bangalore,B016,RedBus,Non AC,07:00,05:00,22h 0m,4,false,800,Basic seating, Water
+Bangalore,Mumbai,B017,RedBus,Non AC,18:00,16:00,22h 0m,4,false,800,Basic seating, Water
+Delhi,Pune,B018,RedBus,AC Seater,19:00,07:00,12h 0m,2,true,1800,AC, WiFi, Water
+Pune,Delhi,B019,RedBus,AC Seater,20:00,08:00,12h 0m,2,true,1800,AC, WiFi, Water

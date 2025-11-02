@@ -101,12 +101,12 @@ class SimpleResultsScreen extends StatelessWidget {
           Container(
             height: 200,
             width: double.infinity,
-            decoration: BoxDecoration(
-              borderRadius: const BorderRadius.only(
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(16),
                 topRight: Radius.circular(16),
               ),
-              image: const DecorationImage(
+              image: DecorationImage(
                 image: NetworkImage(
                   'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=400&fit=crop',
                 ),
@@ -135,7 +135,8 @@ class SimpleResultsScreen extends StatelessWidget {
                     top: 12,
                     left: 12,
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 12, vertical: 6),
                       decoration: BoxDecoration(
                         color: Colors.white.withOpacity(0.9),
                         borderRadius: BorderRadius.circular(20),
@@ -155,7 +156,8 @@ class SimpleResultsScreen extends StatelessWidget {
                     top: 12,
                     right: 12,
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8, vertical: 4),
                       decoration: BoxDecoration(
                         color: Colors.amber,
                         borderRadius: BorderRadius.circular(12),
@@ -289,7 +291,8 @@ class SimpleResultsScreen extends StatelessWidget {
                     runSpacing: 4,
                     children: amenities.take(4).map((amenity) {
                       return Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8, vertical: 4),
                         decoration: BoxDecoration(
                           color: const Color(0xFFE3F2FD),
                           borderRadius: BorderRadius.circular(12),
@@ -338,7 +341,8 @@ class SimpleResultsScreen extends StatelessWidget {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () => _bookHotel(context, hotelMap.cast<String, dynamic>()),
+                    onPressed: () =>
+                        _bookHotel(context, hotelMap.cast<String, dynamic>()),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF1976D2),
                       padding: const EdgeInsets.symmetric(vertical: 12),
@@ -363,7 +367,8 @@ class SimpleResultsScreen extends StatelessWidget {
                   child: OutlinedButton(
                     onPressed: () => _startTinderSwipe(context),
                     style: OutlinedButton.styleFrom(
-                      side: const BorderSide(color: Color(0xFFE74C3C), width: 2),
+                      side:
+                          const BorderSide(color: Color(0xFFE74C3C), width: 2),
                       padding: const EdgeInsets.symmetric(vertical: 12),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
@@ -405,7 +410,8 @@ class SimpleResultsScreen extends StatelessWidget {
       await launch(url);
     } else {
       // Fallback to city search
-      final cityUrl = 'https://www.google.com/maps/search/?api=1&query=${Uri.encodeComponent('$city, India')}';
+      final cityUrl =
+          'https://www.google.com/maps/search/?api=1&query=${Uri.encodeComponent('$city, India')}';
       if (await canLaunch(cityUrl)) {
         await launch(cityUrl);
       }
@@ -424,7 +430,8 @@ class SimpleResultsScreen extends StatelessWidget {
 
   void _startTinderSwipe(BuildContext context) {
     final hotelList = hotels is List ? hotels as List : [];
-    final typedHotels = hotelList.map((hotel) => hotel as Map<String, dynamic>).toList();
+    final typedHotels =
+        hotelList.map((hotel) => hotel as Map<String, dynamic>).toList();
     Navigator.push(
       context,
       MaterialPageRoute(

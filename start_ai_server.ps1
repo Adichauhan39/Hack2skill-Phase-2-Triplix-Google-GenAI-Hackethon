@@ -2,7 +2,7 @@
 Write-Host "Starting AI Hotel Search Server..." -ForegroundColor Cyan
 
 $serverPath = "c:\Hack2skill\Hack2skill finale\7-multi-agent"
-$scriptPath = "simple_ai_server.py"
+$scriptPath = "ultra_simple_server.py"  # Changed to ultra_simple_server for /api/manager endpoint
 
 # Start Python server in a new window
 $process = Start-Process -FilePath "python" `
@@ -19,7 +19,7 @@ Start-Sleep -Seconds 6
 
 # Test server
 try {
-    $test = Invoke-RestMethod -Uri "http://localhost:8000/" -Method Get
+    $test = Invoke-RestMethod -Uri "http://localhost:8001/" -Method Get
     Write-Host "`n✓ Server is RUNNING!" -ForegroundColor Green
     Write-Host "  Status: $($test.status)" -ForegroundColor Gray
     Write-Host "  Model: $($test.model)" -ForegroundColor Gray

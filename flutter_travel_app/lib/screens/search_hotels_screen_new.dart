@@ -93,14 +93,14 @@ class _SearchHotelsScreenState extends State<SearchHotelsScreen> {
       // Try API first
       bool usedMockData = false;
       try {
-        final response = await _api.searchHotels(
+        final response = await _api.searchHotelsWithAI(
+          message: aiPrompt.trim(),
           city: _selectedCity!,
-          checkIn: _checkIn,
-          checkOut: _checkOut,
-          guests: _guests,
-          minPrice: _priceRange.start,
-          maxPrice: _priceRange.end,
-          aiPrompt: aiPrompt.trim(),
+          budget: _hotelBudget,
+          roomType: _roomType,
+          foodTypes: _foodTypes,
+          ambiance: _ambiance,
+          extras: _extras,
         );
 
         setState(() {
@@ -125,7 +125,7 @@ class _SearchHotelsScreenState extends State<SearchHotelsScreen> {
 
         // Show AI response
         final aiResponse =
-            _mockData.generateAIResponse(_searchResults, aiPrompt);
+            _mockData.generateAIResponse(aiPrompt, _searchResults.length);
         if (mounted && aiResponse.isNotEmpty) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
@@ -525,7 +525,7 @@ class _HotelCard extends StatelessWidget {
                         const SizedBox(width: 4),
                         Expanded(
                           child: Text(
-                            hotel.location,
+                            hotel.address ?? hotel.city,
                             style: TextStyle(
                                 fontSize: 12, color: Colors.grey[600]),
                             maxLines: 1,
